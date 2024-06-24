@@ -11,13 +11,14 @@ class MongoDB(object):
         self._client=None
         self.lock=Lock()
         
-    def connectDB(self, collectionName:str):
+    def connectDB(self, databaseName:str, collectionName:str):
         if self._client is None:
             with self.lock:
                 if self._client is None:
                     client=MongoClient(self._CONNECTION_STRING)
-                    collection=client[collectionName]
+                    database=client[collectionName]
+                    collection=database[databaseName]
                     
-        return  client, collection
+        return  client, database, collection
 
         
