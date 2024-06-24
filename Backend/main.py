@@ -11,7 +11,7 @@ async def root():
 
 @app.get('/item/{item_id}')
 async def root_item(item_id:int):
-    return {"massage" :item_id}
+    return {"massage" :user}
 
 
 @app.post('/add_user')
